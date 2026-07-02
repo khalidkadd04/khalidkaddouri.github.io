@@ -12,7 +12,7 @@
 
   <style>
     /* ═══════════════════════════════════════════════════
-       TOKENSZ
+       TOKENS
     ═══════════════════════════════════════════════════ */
     :root {
       --ink:       #0D0D14;
@@ -806,203 +806,13 @@
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
     }
-
-    /* ── MISE EN PAGE CONTACT ──────────────────────────────────────
-     Mobile : 1 colonne  |  Desktop (≥768px) : 2 colonnes
-  ────────────────────────────────────────────────────────────── */
-  #contact { text-align: center; }
-  .contact-inner { max-width: 760px; margin: 0 auto; }
-  .contact-sub {
-    color: var(--muted); font-size: 1rem;
-    margin-bottom: 2.5rem; line-height: 1.75;
-  }
- 
-  /* Grille principale — 1 colonne mobile, 2 colonnes desktop */
-  .contact-layout {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-    text-align: left;
-  }
-  @media (min-width: 768px) {
-    .contact-layout {
-      grid-template-columns: 1fr 1.6fr;
-      gap: 3.5rem;
-      align-items: start;
-    }
-  }
- 
-  /* ── COLONNE GAUCHE — infos ────────────────────────────────── */
-  .contact-aside { display: flex; flex-direction: column; gap: 2rem; }
- 
-  .contact-aside-label {
-    font-family: var(--font-display);
-    font-size: 0.72rem; font-weight: 600;
-    letter-spacing: 0.12em; text-transform: uppercase;
-    color: var(--muted); margin-bottom: 0.4rem;
-  }
-  .contact-email {
-    display: inline-block;
-    font-family: var(--font-display);
-    font-size: clamp(1rem, 2.5vw, 1.25rem); font-weight: 700;
-    padding-bottom: 3px;
-    border-bottom: 2px solid var(--violet);
-    transition: color var(--t), border-color var(--t);
-    word-break: break-all;
-  }
-  .contact-email:hover { color: var(--violet-l); border-color: var(--teal); }
- 
-  .contact-availability {
-    display: flex; align-items: center; gap: 0.5rem;
-    font-size: 0.82rem; color: var(--muted);
-  }
-  /* Point vert animé — utilise l'animation "blink" déjà définie dans le site */
-  .avail-dot {
-    width: 8px; height: 8px; border-radius: 50%;
-    background: #22c55e; box-shadow: 0 0 6px #22c55e;
-    flex-shrink: 0; animation: blink 2s infinite;
-  }
- 
-  .social-links { display: flex; flex-wrap: wrap; gap: 0.75rem; }
-  .social-link {
-    display: flex; align-items: center; justify-content: center;
-    width: 44px; height: 44px;
-    border: 1px solid var(--border); border-radius: 10px;
-    color: var(--muted); transition: all var(--t);
-  }
-  .social-link:hover {
-    border-color: var(--violet); color: var(--violet-l); transform: translateY(-3px);
-  }
- 
-  /* ── COLONNE DROITE — FORMULAIRE ───────────────────────────────
-     Toutes les classes "gform-" sont spécifiques au formulaire.
-  ────────────────────────────────────────────────────────────── */
- 
-  /* Carte conteneur du formulaire */
-  .gform-wrapper {
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 2rem 1.75rem;
-  }
-  .gform-title {
-    font-family: var(--font-display);
-    font-size: 1.05rem; font-weight: 700;
-    margin-bottom: 1.5rem; color: var(--off-white);
-  }
- 
-  /* Ligne de champs : 1 col mobile, 2 cols à partir de 480px si .two-cols */
-  .gform-row {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1rem; margin-bottom: 1rem;
-  }
-  @media (min-width: 480px) {
-    .gform-row.two-cols { grid-template-columns: 1fr 1fr; }
-  }
- 
-  /* Conteneur d'un champ : label + input + message erreur empilés */
-  .gform-field { display: flex; flex-direction: column; gap: 0.4rem; }
- 
-  .gform-label {
-    font-family: var(--font-display);
-    font-size: 0.75rem; font-weight: 600;
-    letter-spacing: 0.05em; text-transform: uppercase;
-    color: var(--muted);
-  }
-  .gform-label .required { color: var(--violet-l); margin-left: 2px; }
- 
-  /* Style commun à tous les champs de saisie */
-  .gform-input,
-  .gform-textarea {
-    width: 100%;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid var(--border);
-    border-radius: 8px; padding: 0.75rem 1rem;
-    font-family: var(--font-body); font-size: 0.92rem;
-    color: var(--off-white); outline: none;
-    transition: border-color var(--t), background var(--t), box-shadow var(--t);
-    -webkit-appearance: none;
-  }
-  .gform-input::placeholder,
-  .gform-textarea::placeholder { color: var(--muted); opacity: 0.6; }
- 
-  /* Focus : halo violet */
-  .gform-input:focus,
-  .gform-textarea:focus {
-    border-color: var(--violet);
-    background: rgba(124,58,237,0.05);
-    box-shadow: 0 0 0 3px rgba(124,58,237,0.15);
-  }
- 
-  /* Erreur : bordure et halo rouge (classe ajoutée par JS) */
-  .gform-input.error,
-  .gform-textarea.error {
-    border-color: #f87171;
-    box-shadow: 0 0 0 3px rgba(248,113,113,0.15);
-  }
- 
-  .gform-textarea { resize: vertical; min-height: 120px; line-height: 1.6; }
- 
-  /* Bouton d'envoi */
-  .gform-submit {
-    width: 100%; margin-top: 1.25rem;
-    padding: 0.9rem 1.5rem;
-    background: var(--violet); color: #fff;
-    border: none; border-radius: 8px;
-    font-family: var(--font-display); font-size: 0.92rem; font-weight: 700;
-    cursor: pointer;
-    transition: background var(--t), transform var(--t), box-shadow var(--t);
-    display: flex; align-items: center; justify-content: center; gap: 0.5rem;
-  }
-  .gform-submit:hover:not(:disabled) {
-    background: #6d28d9; transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(124,58,237,0.35);
-  }
-  .gform-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
- 
-  /* Spinner de chargement — caché par défaut, JS l'affiche pendant l'envoi */
-  .spinner {
-    width: 16px; height: 16px;
-    border: 2px solid rgba(255,255,255,0.3);
-    border-top-color: #fff;
-    border-radius: 50%;
-    animation: spin .7s linear infinite;
-    display: none; /* ← JS change en "block" pendant l'envoi */
-  }
-  @keyframes spin { to { transform: rotate(360deg); } }
- 
-  /* Bandeaux de retour — cachés par défaut, JS les affiche selon résultat */
-  .gform-status {
-    display: none; /* ← JS change en "block" selon le résultat */
-    margin-top: 1rem; padding: 0.85rem 1rem;
-    border-radius: 8px; font-size: 0.85rem; font-weight: 500;
-    text-align: center;
-  }
-  .gform-status.success {
-    background: rgba(34,197,94,0.1);
-    border: 1px solid rgba(34,197,94,0.25); color: #4ade80;
-  }
-  .gform-status.error-msg {
-    background: rgba(248,113,113,0.1);
-    border: 1px solid rgba(248,113,113,0.25); color: #f87171;
-  }
- 
-  /* Message d'erreur sous chaque champ invalide — caché par défaut */
-  .gform-error-text {
-    font-size: 0.72rem; color: #f87171;
-    margin-top: 0.25rem; display: none; /* ← JS change en "block" si erreur */
-  }
-    
   </style>
 </head>
 <body>
 
-  <!-- CURSEUR (desktop) -->
   <div id="cursor-dot"></div>
   <div id="cursor-ring"></div>
 
-  <!-- ══ NAV ══════════════════════════════════════════════════ -->
   <nav id="navbar">
     <div class="nav-logo">YN<span class="dot">.</span></div>
 
@@ -1019,7 +829,6 @@
     </button>
   </nav>
 
-  <!-- Drawer mobile -->
   <div class="nav-drawer" id="nav-drawer" aria-hidden="true">
     <a href="#about"    class="drawer-link">À propos</a>
     <a href="#projects" class="drawer-link">Projets</a>
@@ -1028,7 +837,6 @@
     <a href="#contact"  class="drawer-link">Contact</a>
   </div>
 
-  <!-- ══ HERO ═════════════════════════════════════════════════ -->
   <section id="hero">
     <div class="hero-noise"></div>
     <div class="hero-gradient hero-gradient-1"></div>
@@ -1076,7 +884,6 @@
     </div>
   </section>
 
-  <!-- ══ À PROPOS ══════════════════════════════════════════════ -->
   <section id="about">
     <div class="section-eyebrow reveal">01 — À propos</div>
     <div class="about-grid">
@@ -1128,17 +935,14 @@
     </div>
   </section>
 
-  <!-- ══ PROJETS ════════════════════════════════════════════════ -->
   <section id="projects">
     <div class="section-eyebrow reveal">02 — Projets</div>
     <div class="section-title reveal">Ce que j'ai <em>réalisé</em></div>
 
     <div class="projects-grid">
 
-      <!-- Projet 1 — Dashboard BI -->
       <article class="project-card reveal">
         <div class="project-thumb">
-          <!-- <img src="projet1.png" alt="Dashboard KPI" /> -->
           <span class="thumb-icon">📊</span>
         </div>
         <div class="project-body">
@@ -1162,7 +966,6 @@
         </div>
       </article>
 
-      <!-- Projet 2 — Campagne Google Ads -->
       <article class="project-card reveal">
         <div class="project-thumb">
           <span class="thumb-icon">🎯</span>
@@ -1187,7 +990,6 @@
         </div>
       </article>
 
-      <!-- Projet 3 — Analyse SEO -->
       <article class="project-card reveal">
         <div class="project-thumb">
           <span class="thumb-icon">🔍</span>
@@ -1213,7 +1015,6 @@
         </div>
       </article>
 
-      <!-- Projet 4 — Stratégie réseaux sociaux -->
       <article class="project-card reveal">
         <div class="project-thumb">
           <span class="thumb-icon">📱</span>
@@ -1242,7 +1043,6 @@
     </div>
   </section>
 
-  <!-- ══ COMPÉTENCES ════════════════════════════════════════════ -->
   <section id="skills">
     <div class="section-eyebrow reveal">03 — Compétences</div>
     <div class="section-title reveal">Mon <em>toolkit</em></div>
@@ -1296,7 +1096,6 @@
     </div>
   </section>
 
-  <!-- ══ CERTIFICATIONS ═════════════════════════════════════════ -->
   <section id="certs">
     <div class="section-eyebrow reveal">04 — Certifications</div>
     <div class="section-title reveal">Mes <em>accréditations</em></div>
@@ -1360,265 +1159,143 @@
     </div>
   </section>
 
-  <!-- ══ CONTACT ════════════════════════════════════════════════ -->
-   
-<section id="contact">
-  <div class="contact-inner">
- 
-    <div class="section-eyebrow reveal">05 — Contact</div>
-    <div class="section-title reveal">Travaillons<br/><em>ensemble</em></div>
- 
-    <p class="contact-sub reveal">
-      Vous avez un projet, une opportunité ou une question ?
-      Je suis ouvert aux stages, aux postes juniors et aux missions freelance.
-    </p>
- 
-    <div class="contact-layout reveal">
- 
-      <!-- ── COLONNE GAUCHE : infos ── -->
-      <div class="contact-aside">
- 
-        <div>
-          <div class="contact-aside-label">Email</div>
-          <!-- ✏️ Remplacez par votre vraie adresse email -->
-          <a href="mailto:votre@email.com" class="contact-email">votre@email.com</a>
-        </div>
- 
-        <div>
-          <div class="contact-aside-label">Disponibilité</div>
-          <div class="contact-availability">
-            <span class="avail-dot"></span>
-            Disponible dès maintenant
-          </div>
-        </div>
- 
-        <div>
-          <div class="contact-aside-label">Réseaux</div>
-          <div class="social-links">
-            <!-- ✏️ Remplacez chaque URL par la vôtre -->
-            <a href="https://linkedin.com/in/votre-profil" class="social-link" aria-label="LinkedIn" target="_blank" rel="noopener">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-            </a>
-            <a href="https://behance.net/votre-profil" class="social-link" aria-label="Behance" target="_blank" rel="noopener">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22 7h-7V5h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-3.074 0-5.564-1.729-5.564-5.675 0-3.91 2.325-5.92 5.466-5.92 3.082 0 4.964 1.782 5.375 4.426.078.506.109 1.188.095 2.14H15.97c.13 3.211 3.483 3.312 4.588 2.029H23.7zm-7.249-4h4.556c-.016-1.08-.703-1.99-2.275-1.99-1.533 0-2.18.906-2.281 1.99zm-5.326 6.613c-.828 0-1.69-.153-2.286-.76-.604-.616-.948-1.554-.948-2.869 0-2.621 1.531-3.706 3.309-3.706.96 0 1.676.185 2.218.621V6H2v14h10.9c-.354-.394-.654-.843-.849-1.387zm-3.099-6.042c-.684 0-1.219.492-1.219 1.543 0 1.027.451 1.615 1.219 1.615.816 0 1.246-.626 1.246-1.615 0-.985-.441-1.543-1.246-1.543z"/></svg>
-            </a>
-            <a href="https://x.com/votre-pseudo" class="social-link" aria-label="Twitter/X" target="_blank" rel="noopener">
-              <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-            </a>
-            <a href="https://github.com/votre-pseudo" class="social-link" aria-label="GitHub" target="_blank" rel="noopener">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-            </a>
-          </div>
-        </div>
- 
-      </div><!-- /.contact-aside -->
- 
- 
-      <!-- ── COLONNE DROITE : FORMULAIRE ── -->
-      <div class="gform-wrapper reveal">
-        <div class="gform-title">Envoyer un message</div>
- 
-        <!--
-          ╔══════════════════════════════════════════════════════╗
-          ║  LES 2 ATTRIBUTS CLÉS DU <form> POUR GITHUB PAGES  ║
-          ╠══════════════════════════════════════════════════════╣
-          ║                                                      ║
-          ║  action="...formResponse"                            ║
-          ║  → L'URL de destination : l'endpoint Google Forms.  ║
-          ║    C'est ici que les données sont envoyées.          ║
-          ║    ✏️ NE PAS MODIFIER cette URL.                     ║
-          ║                                                      ║
-          ║  target="hidden-iframe"                              ║
-          ║  → Redirige la réponse vers l'<iframe> invisible     ║
-          ║    défini plus bas (id="hidden-iframe").             ║
-          ║    Sans ça, le navigateur redirigerait la page       ║
-          ║    vers Google Forms après soumission.               ║
-          ║                                                      ║
-          ║  method="POST"                                       ║
-          ║  → Envoie les données dans le corps de la requête   ║
-          ║    (et non dans l'URL comme GET).                    ║
-          ║                                                      ║
-          ║  novalidate                                          ║
-          ║  → Désactive la validation native du navigateur      ║
-          ║    (bulles jaunes). On utilise notre propre JS.      ║
-          ╚══════════════════════════════════════════════════════╝
-        -->
-        <form
-          id="gform"
-          action="https://docs.google.com/forms/d/e/1FAIpQLSehKkuGqamQNJUWh08raSZae03a0vpGZWZqAgzODG_RPm1v_Q/formResponse"
-          method="POST"
-          target="hidden-iframe"
-          novalidate
-        >
- 
-          <!-- LIGNE 1 : Nom complet + Email -->
-          <div class="gform-row two-cols">
- 
-            <!--
-              CHAMP : Nom complet
-              name="entry.397367347" → identifiant unique de ce champ dans votre Google Form
-              ✏️ NE PAS MODIFIER le name= (lié à votre form spécifique)
-            -->
-            <div class="gform-field">
-              <label class="gform-label" for="f-nom">
-                Nom complet <span class="required">*</span>
-              </label>
-              <input
-                id="f-nom"
-                name="entry.397367347"
-                type="text"
-                class="gform-input"
-                placeholder="Jean Dupont"
-                autocomplete="name"
-                required
-              />
-              <!-- Affiché par JS si le champ est vide à la soumission -->
-              <span class="gform-error-text" id="err-nom">Ce champ est requis.</span>
-            </div>
- 
-            <!--
-              CHAMP : Email
-              name="entry.2131490758" → identifiant Google Forms
-              Le JS vérifie aussi le format (regex xxx@xxx.xx)
-            -->
-            <div class="gform-field">
-              <label class="gform-label" for="f-email">
-                Email <span class="required">*</span>
-              </label>
-              <input
-                id="f-email"
-                name="entry.2131490758"
-                type="email"
-                class="gform-input"
-                placeholder="jean@exemple.com"
-                autocomplete="email"
-                required
-              />
-              <span class="gform-error-text" id="err-email">Email invalide.</span>
-            </div>
- 
-          </div>
- 
-          <!-- LIGNE 2 : Téléphone + Sujet -->
-          <div class="gform-row two-cols">
- 
-            <!--
-              CHAMP : Téléphone (optionnel — pas de "required")
-              Le JS ne valide pas ce champ, il est toujours accepté vide.
-            -->
-            <div class="gform-field">
-              <label class="gform-label" for="f-tel">Téléphone</label>
-              <input
-                id="f-tel"
-                name="entry.251448844"
-                type="tel"
-                class="gform-input"
-                placeholder="+212 6XX XXX XXX"
-                autocomplete="tel"
-              />
-            </div>
- 
-            <!-- CHAMP : Sujet / Objet -->
-            <div class="gform-field">
-              <label class="gform-label" for="f-sujet">
-                Sujet / Objet <span class="required">*</span>
-              </label>
-              <input
-                id="f-sujet"
-                name="entry.1433315990"
-                type="text"
-                class="gform-input"
-                placeholder="Opportunité de stage…"
-                required
-              />
-              <span class="gform-error-text" id="err-sujet">Ce champ est requis.</span>
-            </div>
- 
-          </div>
- 
-          <!-- LIGNE 3 : Message (pleine largeur) -->
-          <div class="gform-row">
-            <div class="gform-field">
-              <label class="gform-label" for="f-message">
-                Message <span class="required">*</span>
-              </label>
-              <textarea
-                id="f-message"
-                name="entry.1477641668"
-                class="gform-textarea"
-                placeholder="Bonjour, je vous contacte à propos de…"
-                required
-              ></textarea>
-              <span class="gform-error-text" id="err-message">Ce champ est requis.</span>
-            </div>
-          </div>
- 
-          <!--
-            BOUTON D'ENVOI
-            Le JS alterne entre 3 états visuels :
-            ① Repos   : texte "Envoyer le message" + icône avion
-            ② Envoi   : texte "Envoi en cours…"   + spinner animé
-            ③ Résultat: retour à l'état ① + bandeau succès ou erreur
-          -->
-          <button type="submit" class="gform-submit" id="gform-btn">
-            <span id="btn-text">Envoyer le message</span>
-            <div class="spinner" id="btn-spinner"></div>
-            <svg id="btn-icon" width="16" height="16" viewBox="0 0 24 24"
-                 fill="none" stroke="currentColor" stroke-width="2.5">
-              <path d="M22 2L11 13"/>
-              <path d="M22 2L15 22l-4-9-9-4 20-7z"/>
-            </svg>
-          </button>
- 
-          <!-- Bandeau vert : affiché par JS après envoi réussi -->
-          <div class="gform-status success" id="gform-success">
-            ✅ Votre message a bien été envoyé ! Je vous répondrai dans les plus brefs délais.
-          </div>
- 
-          <!-- Bandeau rouge : affiché par JS si erreur de validation -->
-          <div class="gform-status error-msg" id="gform-error">
-            ❌ Veuillez corriger les erreurs avant d'envoyer.
-          </div>
- 
-        </form>
- 
-        <!--
-          ╔══════════════════════════════════════════════════════╗
-          ║  IFRAME INVISIBLE — CŒUR DE LA TECHNIQUE            ║
-          ╠══════════════════════════════════════════════════════╣
-          ║  Cet iframe ne s'affiche jamais (display:none).     ║
-          ║  Il sert uniquement de "cible" pour le <form>.      ║
-          ║                                                      ║
-          ║  Quand le formulaire est soumis :                   ║
-          ║  → Le navigateur charge la réponse Google dans cet  ║
-          ║    iframe au lieu de rediriger la page.             ║
-          ║  → L'événement "onload" de l'iframe se déclenche.  ║
-          ║  → Le JS intercepte cet onload pour afficher        ║
-          ║    le message de succès à l'utilisateur.            ║
-          ║                                                      ║
-          ║  name="hidden-iframe" doit correspondre exactement  ║
-          ║  à l'attribut target="hidden-iframe" du <form>.     ║
-          ╚══════════════════════════════════════════════════════╝
-        -->
-        <iframe
-          id="hidden-iframe"
-          name="hidden-iframe"
-          style="display:none;"
-          title="Cible silencieuse pour la soumission Google Forms"
-        ></iframe>
- 
-      </div><!-- /.gform-wrapper -->
-    </div><!-- /.contact-layout -->
-  </div><!-- /.contact-inner -->
-</section>
+  <section id="contact">
+    <div class="contact-inner">
+      <div class="section-eyebrow reveal">05 — Contact</div>
+      <div class="section-title reveal">Travaillons<br/><em>ensemble</em></div>
 
-  <!-- ══ FOOTER ═════════════════════════════════════════════════ -->
+      <p class="contact-sub reveal">
+        Vous avez un projet, une opportunité ou une question ?
+        Je suis ouvert aux stages, aux postes juniors et aux missions freelance.
+      </p>
+
+      <div class="contact-layout reveal">
+
+        <div class="contact-aside">
+
+          <div>
+            <div class="contact-aside-label">Email</div>
+            <a href="mailto:votre@email.com" class="contact-email">votre@email.com</a>
+          </div>
+
+          <div>
+            <div class="contact-aside-label">Disponibilité</div>
+            <div class="contact-availability">
+              <span class="avail-dot"></span>
+              Disponible dès maintenant
+            </div>
+          </div>
+
+          <div>
+            <div class="contact-aside-label">Réseaux</div>
+            <div class="social-links">
+              <a href="https://linkedin.com/in/votre-profil" class="social-link" aria-label="LinkedIn" target="_blank" rel="noopener">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+              </a>
+              <a href="https://behance.net/votre-profil" class="social-link" aria-label="Behance" target="_blank" rel="noopener">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22 7h-7V5h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-3.074 0-5.564-1.729-5.564-5.675 0-3.91 2.325-5.92 5.466-5.92 3.082 0 4.964 1.782 5.375 4.426.078.506.109 1.188.095 2.14H15.97c.13 3.211 3.483 3.312 4.588 2.029H23.7zm-7.249-4h4.556c-.016-1.08-.703-1.99-2.275-1.99-1.533 0-2.18.906-2.281 1.99zm-5.326 6.613c-.828 0-1.69-.153-2.286-.76-.604-.616-.948-1.554-.948-2.869 0-2.621 1.531-3.706 3.309-3.706.96 0 1.676.185 2.218.621V6H2v14h10.9c-.354-.394-.654-.843-.849-1.387zm-3.099-6.042c-.684 0-1.219.492-1.219 1.543 0 1.027.451 1.615 1.219 1.615.816 0 1.246-.626 1.246-1.615 0-.985-.441-1.543-1.246-1.543z"/></svg>
+              </a>
+              <a href="https://x.com/votre-pseudo" class="social-link" aria-label="Twitter/X" target="_blank" rel="noopener">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              </a>
+              <a href="https://github.com/votre-pseudo" class="social-link" aria-label="GitHub" target="_blank" rel="noopener">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="gform-wrapper reveal">
+          <div class="gform-title">Envoyer un message</div>
+
+          <form id="gform" novalidate>
+            <div class="gform-row two-cols">
+              <div class="gform-field">
+                <label class="gform-label" for="f-nom">
+                  Nom complet <span class="required">*</span>
+                </label>
+                <input
+                  id="f-nom" name="entry.397367347" type="text"
+                  class="gform-input" placeholder="Jean Dupont"
+                  autocomplete="name" required
+                />
+                <span class="gform-error-text" id="err-nom">Ce champ est requis.</span>
+              </div>
+
+              <div class="gform-field">
+                <label class="gform-label" for="f-email">
+                  Email <span class="required">*</span>
+                </label>
+                <input
+                  id="f-email" name="entry.2131490758" type="email"
+                  class="gform-input" placeholder="jean@exemple.com"
+                  autocomplete="email" required
+                />
+                <span class="gform-error-text" id="err-email">Email invalide.</span>
+              </div>
+            </div>
+
+            <div class="gform-row two-cols">
+              <div class="gform-field">
+                <label class="gform-label" for="f-tel">Téléphone</label>
+                <input
+                  id="f-tel" name="entry.251448844" type="tel"
+                  class="gform-input" placeholder="+212 6XX XXX XXX"
+                  autocomplete="tel"
+                />
+              </div>
+
+              <div class="gform-field">
+                <label class="gform-label" for="f-sujet">
+                  Sujet / Objet <span class="required">*</span>
+                </label>
+                <input
+                  id="f-sujet" name="entry.1433315990" type="text"
+                  class="gform-input" placeholder="Opportunité de stage…"
+                  required
+                />
+                <span class="gform-error-text" id="err-sujet">Ce champ est requis.</span>
+              </div>
+            </div>
+
+            <div class="gform-row">
+              <div class="gform-field">
+                <label class="gform-label" for="f-message">
+                  Message <span class="required">*</span>
+                </label>
+                <textarea
+                  id="f-message" name="entry.1477641668"
+                  class="gform-textarea" placeholder="Bonjour, je vous contacte à propos de…"
+                  required
+                ></textarea>
+                <span class="gform-error-text" id="err-message">Ce champ est requis.</span>
+              </div>
+            </div>
+
+            <button type="submit" class="gform-submit" id="gform-btn">
+              <span id="btn-text">Envoyer le message</span>
+              <div class="spinner" id="btn-spinner"></div>
+              <svg id="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 2L11 13"/><path d="M22 2L15 22l-4-9-9-4 20-7z"/></svg>
+            </button>
+
+            <div class="gform-status success" id="gform-success">
+              ✅ Votre message a bien été envoyé ! Je vous répondrai dans les plus brefs délais.
+            </div>
+            <div class="gform-status error-msg" id="gform-error">
+              ❌ Une erreur est survenue. Veuillez réessayer ou m'écrire directement par email.
+            </div>
+          </form>
+        </div>
+
+      </div></div>
+  </section>
+
   <footer>
     <p>© 2025 Votre Prénom Nom — Tous droits réservés</p>
     <p>Marketing Digital &amp; Business Intelligence</p>
   </footer>
 
-  <!-- ══ SCRIPTS ════════════════════════════════════════════════ -->
   <script>
     /* ─ Hamburger menu ──────────────────────────────────────────── */
     const hamburger = document.getElementById('hamburger');
@@ -1773,143 +1450,6 @@
         }
       });
     })();
-    
-  /* ════════════════════════════════════════════════════════════════
-     FORMULAIRE GOOGLE FORMS — COMPATIBLE GITHUB PAGES
-  ════════════════════════════════════════════════════════════════ */
-  (function () {
- 
-    /* ── Sélection des éléments HTML ────────────────────────────── */
-    const form    = document.getElementById('gform');
-    const btn     = document.getElementById('gform-btn');
-    const btnText = document.getElementById('btn-text');
-    const spinner = document.getElementById('btn-spinner');
-    const btnIcon = document.getElementById('btn-icon');
-    const elOk    = document.getElementById('gform-success');
-    const elErr   = document.getElementById('gform-error');
-    const iframe  = document.getElementById('hidden-iframe');
- 
-    /* Flag : ignore le premier "onload" de l'iframe au chargement de la page.
-       L'iframe déclenche "onload" une fois au démarrage (page vide initiale).
-       On veut seulement réagir aux chargements APRÈS une soumission de form. */
-    let formSubmitted = false;
- 
- 
-    /* ── Fonction de validation d'un champ ─────────────────────────
-       Paramètres :
-       → input      : l'élément <input>/<textarea> à vérifier
-       → errId      : id du <span> d'erreur sous le champ
-       → checkEmail : true = vérifier le format email
-       Retourne : true (champ valide) ou false (champ invalide)
-    ────────────────────────────────────────────────────────────── */
-    function validateField(input, errId, checkEmail) {
-      const err = document.getElementById(errId);
-      let valid = true;
- 
-      if (input.required && !input.value.trim()) {
-        /* Champ obligatoire et vide */
-        valid = false;
-      } else if (checkEmail && input.value.trim()) {
-        /* Vérification du format email via regex */
-        valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value.trim());
-      }
- 
-      input.classList.toggle('error', !valid);      /* bordure rouge si invalide */
-      if (err) err.style.display = valid ? 'none' : 'block';
-      return valid;
-    }
- 
- 
-    /* ── Validation en temps réel (au blur = quitter le champ) ──── */
-    document.getElementById('f-nom')
-      .addEventListener('blur', () => validateField(document.getElementById('f-nom'), 'err-nom', false));
-    document.getElementById('f-email')
-      .addEventListener('blur', () => validateField(document.getElementById('f-email'), 'err-email', true));
-    document.getElementById('f-sujet')
-      .addEventListener('blur', () => validateField(document.getElementById('f-sujet'), 'err-sujet', false));
-    document.getElementById('f-message')
-      .addEventListener('blur', () => validateField(document.getElementById('f-message'), 'err-message', false));
- 
- 
-    /* ── Interception de la soumission du formulaire ────────────────
-       Le <form> se soumet VRAIMENT vers Google (via target=iframe),
-       mais le JS prend la main AVANT pour :
-       1. Valider les champs
-       2. Mettre à jour l'UI (spinner, désactivation bouton)
-       3. Armer l'écouteur "onload" de l'iframe pour détecter la réponse
-    ────────────────────────────────────────────────────────────── */
-    form.addEventListener('submit', function (e) {
- 
-      /* ── Étape 1 : Validation de tous les champs obligatoires ── */
-      const v1 = validateField(document.getElementById('f-nom'),     'err-nom',     false);
-      const v2 = validateField(document.getElementById('f-email'),   'err-email',   true);
-      const v3 = validateField(document.getElementById('f-sujet'),   'err-sujet',   false);
-      const v4 = validateField(document.getElementById('f-message'), 'err-message', false);
- 
-      if (!v1 || !v2 || !v3 || !v4) {
-        /* Au moins un champ invalide :
-           e.preventDefault() bloque la soumission du form vers Google */
-        e.preventDefault();
-        elErr.style.display = 'block';
-        elOk.style.display  = 'none';
-        return;
-      }
- 
-      /* ── Étape 2 : Tous les champs sont valides
-         On NE fait PAS e.preventDefault() → le navigateur
-         soumet bien le formulaire vers Google via l'iframe.
-      ── */
- 
-      /* Cacher les anciens messages de retour */
-      elOk.style.display  = 'none';
-      elErr.style.display = 'none';
- 
-      /* Passer le bouton en état "chargement" */
-      btn.disabled        = true;
-      btnText.textContent = 'Envoi en cours…';
-      spinner.style.display = 'block'; /* affiche la roue */
-      btnIcon.style.display = 'none';  /* cache l'icône avion */
- 
-      /* Armer le flag : le prochain onload de l'iframe sera une vraie réponse */
-      formSubmitted = true;
-    });
- 
- 
-    /* ── Détection de la réponse Google via l'iframe ────────────────
-       Quand Google Forms reçoit les données et répond,
-       l'iframe se "recharge" → l'événement "load" se déclenche.
-       C'est le signal que les données sont bien arrivées chez Google.
- 
-       ⚠️ On vérifie "formSubmitted" pour ignorer le load initial
-          (l'iframe charge "about:blank" au démarrage de la page).
-    ────────────────────────────────────────────────────────────── */
-    iframe.addEventListener('load', function () {
- 
-      /* Ignorer le chargement initial (avant toute soumission) */
-      if (!formSubmitted) return;
- 
-      /* Réinitialiser le flag pour les prochaines soumissions */
-      formSubmitted = false;
- 
-      /* Afficher le message de succès vert */
-      elOk.style.display = 'block';
- 
-      /* Vider tous les champs du formulaire */
-      form.reset();
- 
-      /* Retirer les éventuelles bordures rouges restantes */
-      form.querySelectorAll('.gform-input, .gform-textarea')
-          .forEach(el => el.classList.remove('error'));
- 
-      /* Remettre le bouton dans son état normal */
-      btn.disabled          = false;
-      btnText.textContent   = 'Envoyer le message';
-      spinner.style.display = 'none';  /* cache la roue */
-      btnIcon.style.display = 'block'; /* réaffiche l'icône avion */
-    });
- 
-  })(); /* fin IIFE — s'exécute automatiquement au chargement */
- 
   </script>
 
 </body>
