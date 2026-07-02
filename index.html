@@ -1031,124 +1031,96 @@
         Vous avez un projet, une opportunité ou une question ?
         Je suis ouvert aux stages, aux postes juniors et aux missions freelance.
       </p>
-  /* ── FORMULAIRE ───────────────────────────────────── */
-    .gform-wrapper {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 2rem 1.75rem;
-    }
-    .gform-title {
-      font-family: var(--font-display);
-      font-size: 1.05rem; font-weight: 700;
-      letter-spacing: -0.01em;
-      margin-bottom: 1.5rem;
-      color: var(--off-white);
-    }
-    .gform-row {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1rem;
-      margin-bottom: 1rem;
-    }
-    @media (min-width: 480px) {
-      .gform-row.two-cols { grid-template-columns: 1fr 1fr; }
-    }
+         <!-- ── Colonne droite : formulaire Google Forms ── -->
+        <div class="gform-wrapper reveal">
+          <div class="gform-title">Envoyer un message</div>
  
-    .gform-field { display: flex; flex-direction: column; gap: 0.4rem; }
-    .gform-label {
-      font-family: var(--font-display);
-      font-size: 0.75rem; font-weight: 600;
-      letter-spacing: 0.05em; text-transform: uppercase;
-      color: var(--muted);
-    }
-    .gform-label .required { color: var(--violet-l); margin-left: 2px; }
+          <form id="gform" novalidate>
+            <!-- Ligne 1 : Nom + Email -->
+            <div class="gform-row two-cols">
+              <div class="gform-field">
+                <label class="gform-label" for="f-nom">
+                  Nom complet <span class="required">*</span>
+                </label>
+                <input
+                  id="f-nom" name="entry.397367347" type="text"
+                  class="gform-input" placeholder="Jean Dupont"
+                  autocomplete="name" required
+                />
+                <span class="gform-error-text" id="err-nom">Ce champ est requis.</span>
+              </div>
  
-    .gform-input,
-    .gform-textarea,
-    .gform-select {
-      width: 100%;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 0.75rem 1rem;
-      font-family: var(--font-body);
-      font-size: 0.92rem;
-      color: var(--off-white);
-      outline: none;
-      transition: border-color var(--t), background var(--t), box-shadow var(--t);
-      -webkit-appearance: none;
-    }
-    .gform-input::placeholder,
-    .gform-textarea::placeholder { color: var(--muted); opacity: 0.6; }
-    .gform-input:focus,
-    .gform-textarea:focus,
-    .gform-select:focus {
-      border-color: var(--violet);
-      background: rgba(124,58,237,0.05);
-      box-shadow: 0 0 0 3px rgba(124,58,237,0.15);
-    }
-    .gform-input.error,
-    .gform-textarea.error { border-color: #f87171; box-shadow: 0 0 0 3px rgba(248,113,113,0.15); }
+              <div class="gform-field">
+                <label class="gform-label" for="f-email">
+                  Email <span class="required">*</span>
+                </label>
+                <input
+                  id="f-email" name="entry.2131490758" type="email"
+                  class="gform-input" placeholder="jean@exemple.com"
+                  autocomplete="email" required
+                />
+                <span class="gform-error-text" id="err-email">Email invalide.</span>
+              </div>
+            </div>
  
-    .gform-textarea { resize: vertical; min-height: 120px; line-height: 1.6; }
+            <!-- Ligne 2 : Téléphone + Sujet -->
+            <div class="gform-row two-cols">
+              <div class="gform-field">
+                <label class="gform-label" for="f-tel">Téléphone</label>
+                <input
+                  id="f-tel" name="entry.251448844" type="tel"
+                  class="gform-input" placeholder="+212 6XX XXX XXX"
+                  autocomplete="tel"
+                />
+              </div>
  
-    .gform-submit {
-      width: 100%;
-      margin-top: 1.25rem;
-      padding: 0.9rem 1.5rem;
-      background: var(--violet);
-      color: #fff;
-      border: none;
-      border-radius: 8px;
-      font-family: var(--font-display);
-      font-size: 0.92rem; font-weight: 700;
-      letter-spacing: 0.02em;
-      cursor: pointer;
-      transition: background var(--t), transform var(--t), box-shadow var(--t);
-      display: flex; align-items: center; justify-content: center; gap: 0.5rem;
-    }
-    .gform-submit:hover:not(:disabled) {
-      background: #6d28d9;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(124,58,237,0.35);
-    }
-    .gform-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+              <div class="gform-field">
+                <label class="gform-label" for="f-sujet">
+                  Sujet / Objet <span class="required">*</span>
+                </label>
+                <input
+                  id="f-sujet" name="entry.1433315990" type="text"
+                  class="gform-input" placeholder="Opportunité de stage…"
+                  required
+                />
+                <span class="gform-error-text" id="err-sujet">Ce champ est requis.</span>
+              </div>
+            </div>
  
-    /* Spinner */
-    .spinner {
-      width: 16px; height: 16px;
-      border: 2px solid rgba(255,255,255,0.3);
-      border-top-color: #fff;
-      border-radius: 50%;
-      animation: spin .7s linear infinite;
-      display: none;
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
+            <!-- Ligne 3 : Message -->
+            <div class="gform-row">
+              <div class="gform-field">
+                <label class="gform-label" for="f-message">
+                  Message <span class="required">*</span>
+                </label>
+                <textarea
+                  id="f-message" name="entry.1477641668"
+                  class="gform-textarea" placeholder="Bonjour, je vous contacte à propos de…"
+                  required
+                ></textarea>
+                <span class="gform-error-text" id="err-message">Ce champ est requis.</span>
+              </div>
+            </div>
  
-    /* Messages état */
-    .gform-status {
-      display: none;
-      margin-top: 1rem;
-      padding: 0.85rem 1rem;
-      border-radius: 8px;
-      font-size: 0.85rem; font-weight: 500;
-      text-align: center;
-    }
-    .gform-status.success {
-      background: rgba(34,197,94,0.1);
-      border: 1px solid rgba(34,197,94,0.25);
-      color: #4ade80;
-    }
-    .gform-status.error-msg {
-      background: rgba(248,113,113,0.1);
-      border: 1px solid rgba(248,113,113,0.25);
-      color: #f87171;
-    }
-    .gform-error-text {
-      font-size: 0.72rem; color: #f87171; margin-top: 0.25rem; display: none;
-    }
-
+            <button type="submit" class="gform-submit" id="gform-btn">
+              <span id="btn-text">Envoyer le message</span>
+              <div class="spinner" id="btn-spinner"></div>
+              <svg id="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 2L11 13"/><path d="M22 2L15 22l-4-9-9-4 20-7z"/></svg>
+            </button>
+ 
+            <!-- Messages de retour -->
+            <div class="gform-status success" id="gform-success">
+              ✅ Votre message a bien été envoyé ! Je vous répondrai dans les plus brefs délais.
+            </div>
+            <div class="gform-status error-msg" id="gform-error">
+              ❌ Une erreur est survenue. Veuillez réessayer ou m'écrire directement par email.
+            </div>
+          </form>
+        </div>
+ 
+      </div><!-- /.contact-layout -->
+    </div>
+  </section>
       <a href="mailto:khalidkaddouri04@gmail.com" class="contact-email reveal">
         khalidkaddouri04@gmail.com
       </a>
