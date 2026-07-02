@@ -1056,7 +1056,124 @@
       </div>
     </div>
   </section>
-
+ <!-- ══ FORMULAIRE ═════════════════════════════════════════════════ -->
+    .gform-wrapper {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem 1.75rem;
+    }
+    .gform-title {
+      font-family: var(--font-display);
+      font-size: 1.05rem; font-weight: 700;
+      letter-spacing: -0.01em;
+      margin-bottom: 1.5rem;
+      color: var(--off-white);
+    }
+    .gform-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    @media (min-width: 480px) {
+      .gform-row.two-cols { grid-template-columns: 1fr 1fr; }
+    }
+ 
+    .gform-field { display: flex; flex-direction: column; gap: 0.4rem; }
+    .gform-label {
+      font-family: var(--font-display);
+      font-size: 0.75rem; font-weight: 600;
+      letter-spacing: 0.05em; text-transform: uppercase;
+      color: var(--muted);
+    }
+    .gform-label .required { color: var(--violet-l); margin-left: 2px; }
+ 
+    .gform-input,
+    .gform-textarea,
+    .gform-select {
+      width: 100%;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      font-family: var(--font-body);
+      font-size: 0.92rem;
+      color: var(--off-white);
+      outline: none;
+      transition: border-color var(--t), background var(--t), box-shadow var(--t);
+      -webkit-appearance: none;
+    }
+    .gform-input::placeholder,
+    .gform-textarea::placeholder { color: var(--muted); opacity: 0.6; }
+    .gform-input:focus,
+    .gform-textarea:focus,
+    .gform-select:focus {
+      border-color: var(--violet);
+      background: rgba(124,58,237,0.05);
+      box-shadow: 0 0 0 3px rgba(124,58,237,0.15);
+    }
+    .gform-input.error,
+    .gform-textarea.error { border-color: #f87171; box-shadow: 0 0 0 3px rgba(248,113,113,0.15); }
+ 
+    .gform-textarea { resize: vertical; min-height: 120px; line-height: 1.6; }
+ 
+    .gform-submit {
+      width: 100%;
+      margin-top: 1.25rem;
+      padding: 0.9rem 1.5rem;
+      background: var(--violet);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-family: var(--font-display);
+      font-size: 0.92rem; font-weight: 700;
+      letter-spacing: 0.02em;
+      cursor: pointer;
+      transition: background var(--t), transform var(--t), box-shadow var(--t);
+      display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+    }
+    .gform-submit:hover:not(:disabled) {
+      background: #6d28d9;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(124,58,237,0.35);
+    }
+    .gform-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+ 
+    /* Spinner */
+    .spinner {
+      width: 16px; height: 16px;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin .7s linear infinite;
+      display: none;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+ 
+    /* Messages état */
+    .gform-status {
+      display: none;
+      margin-top: 1rem;
+      padding: 0.85rem 1rem;
+      border-radius: 8px;
+      font-size: 0.85rem; font-weight: 500;
+      text-align: center;
+    }
+    .gform-status.success {
+      background: rgba(34,197,94,0.1);
+      border: 1px solid rgba(34,197,94,0.25);
+      color: #4ade80;
+    }
+    .gform-status.error-msg {
+      background: rgba(248,113,113,0.1);
+      border: 1px solid rgba(248,113,113,0.25);
+      color: #f87171;
+    }
+    .gform-error-text {
+      font-size: 0.72rem; color: #f87171; margin-top: 0.25rem; display: none;
+    }
+  
   <!-- ══ FOOTER ═════════════════════════════════════════════════ -->
   <footer>
     <p>© 2026 KADDOURI KHALID — Tous droits réservés</p>
